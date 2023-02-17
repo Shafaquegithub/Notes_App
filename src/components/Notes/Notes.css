@@ -1,0 +1,85 @@
+.notes-sec {
+  width: 90%;
+  max-width: 310px;
+  padding-top: 15px;
+  box-shadow: 5px 5px 20px 5px rgb(232, 230, 230);
+  border: 1px solid rgba(111, 111, 6, 0.187);
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: start;
+  margin-bottom: 20px;
+  height: 140px;
+  position: relative;
+}
+.notes-sec .content-div > p {
+  padding: 10px 15px 0px;
+  font-size: 14px;
+}
+.status-div {
+  padding: 5px 8px;
+  border-radius: 0 0 0 10px;
+  color: white;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 12px;
+}
+.notes-sec .content-div > h3 {
+  padding: 10px 15px 0px;
+  font-size: 18px;
+}
+.fullview-span {
+  color: rgba(43, 49, 226, 0.723);
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+}
+.fullview-span:hover {
+  font-weight: 700;
+  font-size: 15px;
+}
+.btn-div {
+  background-color: rgba(111, 111, 6, 0.687);
+  margin-top: 15px;
+  padding: 6px 10px 1px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.btn-div .date-sec {
+  font-size: 12px;
+  font-weight: 600;
+}
+.btn-div button {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  margin-left: 8px;
+  cursor: pointer;
+  color: rgba(11, 19, 244, 0.75);
+}
+.btn-div button:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 700px) {
+  .notes-sec {
+    width: 90%;
+    max-width: 380px;
+    padding-top: 15px;
+    box-shadow: 5px 5px 20px 5px rgb(232, 230, 230);
+    border: 1px solid rgba(111, 111, 6, 0.187);
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: start;
+    margin-bottom: 20px;
+    height: 140px;
+    position: relative;
+  }
+  .notes-sec .content-div > p {
+    font-size: 12px;
+  }
+}

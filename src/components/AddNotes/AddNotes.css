@@ -1,0 +1,50 @@
+.form-sec {
+  margin-top: 50px;
+}
+.form-sec form {
+  width: 80%;
+  max-width: 350px;
+  margin: 0px auto;
+  padding: 20px 10px 5px 20px;
+  border-radius: 10px;
+  box-shadow: 10px 10px 30px 5px rgb(232, 230, 230);
+  position: relative;
+  text-align: start;
+}
+
+.form-sec input {
+  width: 95%;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  font-weight: 600;
+}
+.form-sec textarea {
+  width: 95%;
+  margin-top: 12px;
+  border: none;
+  outline: none;
+  font-size: 17px;
+  min-height: 100px;
+}
+.form-sec button[type="submit"] {
+  background-color: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  transform: translate(5px, 5px);
+  box-shadow: 10px 10px 30px 2px rgb(210, 207, 207);
+  color: rgba(111, 111, 6, 0.687);
+  font-size: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.form-sec button[type="submit"]:hover {
+  border: 1px solid rgba(111, 111, 6, 0.187);
+}
