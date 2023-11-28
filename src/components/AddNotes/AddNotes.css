@@ -47,4 +47,32 @@
 }
 .form-sec button[type="submit"]:hover {
   border: 1px solid rgba(111, 111, 6, 0.187);
+  z-index: -5;
 }
+form {
+  position: relative;
+}
+.tooltip {
+  position: absolute;
+  top: -40px;
+  margin: 0px auto 10px;
+  max-width: 300px;
+  padding: 15px 40px;
+  background-color: rgb(241, 83, 83);
+  font-size: 15px;
+  border-radius: 5px;
+}
+.tooltip::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: rgb(241, 83, 83);
+  transform: rotate(40deg);
+  position: absolute;
+  left: 40%;
+  bottom: -5px;
+}
+.textarea {
+  z-index: -1;
+}
+/* The element to apply the animation to */

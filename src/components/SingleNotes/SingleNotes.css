@@ -1,7 +1,7 @@
 .singleNotes-sec {
   min-width: 100vw;
   min-height: 100vh;
-  background-color: rgba(0, 0, 0, 0.265);
+  background-color: rgba(0, 0, 0, 0.665);
   position: fixed;
   top: 0;
   left: 0;
@@ -28,14 +28,29 @@
   display: flex;
   justify-content: left;
   font-size: 14px;
-  font-style: italic;
-  flex-wrap: wrap;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin: 10px 0 15px;
 }
-.status-btn-div input {
-  margin: 10px 20px 0 5px;
+.status-btn-div div {
+  padding: 6px 20px 4px;
+  border-radius: 10px;
+  border: 1px solid rgba(95, 95, 47, 0.987);
+  margin: 0 5px;
+  cursor: pointer;
 }
+.status-btn-div div:hover {
+  border: 1px solid black;
+}
+.overdue-div {
+  font-size: 14px;
+  color: white;
+  background-color: rgba(255, 68, 0, 0.391);
+  margin: 20px 0 -20px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+}
+
 .singleNotes-sec .details {
   max-width: 600px;
   width: 70%;
@@ -84,11 +99,7 @@
     width: 30px;
     font-size: 20px;
   }
-  .status-btn-div {
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
+
   .singleNotes-sec .details {
     width: 80%;
     min-height: 100px;

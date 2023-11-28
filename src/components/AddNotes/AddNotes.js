@@ -12,30 +12,7 @@ const AddNotes = ({
   editingIndex,
   setEditingIndex,
 }) => {
-  // setDate
-  // const setDate = () => {
-  //   let date = new Date();
-  //   let day = date.getDate();
-  //   let allMonths = [
-  //     "Jan",
-  //     "Feb",
-  //     "Mar",
-  //     "Apr",
-  //     "May",
-  //     "Jun",
-  //     "Jul",
-  //     "Aug",
-  //     "Sep",
-  //     "Oct",
-  //     "Nov",
-  //     "Dec",
-  //   ];
-  //   let month = date.getMonth();
-  //   let year = date.getFullYear();
-  //   let fullDate = `${day > 10 ? day : "0" + day} ${allMonths[month]} ${year}`;
-  //   return fullDate;
-  // };
-  // .........handleChange.........Getting data from Input Fields.....
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     if (editMode) {
@@ -58,40 +35,49 @@ const AddNotes = ({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    if (notes.title && notes.details) {
-      if (editMode) {
-        setAllNotes(
-          allNotes.map((e, index) => {
-            if (index == editingIndex) {
-              return notes;
-            }
-            return e;
-          })
-        );
-        setEditMode(false);
-        setEditingIndex(null);
-      } else {
-        setAllNotes([...allNotes, notes]);
-      }
-      setNotes({
-        title: "",
-        details: "",
-        date: "",
-        status: "",
-      });
-      let dateInput = document.getElementById("date");
-      dateInput.value = "";
-      dateInput.type = "text";
-    } else {
-      alert("Please fill both input fields to save your Notes");
+    if (!notes.title || !notes.details || !notes.dueDate) {
+      setError("Please fill all required fields");
+      return;
     }
+    if (new Date() > new Date(notes.dueDate)) {
+      setError("Please select future date");
+      return;
+    }
+    if (editMode) {
+      setAllNotes(
+        allNotes.map((e, index) => {
+          if (index == editingIndex) {
+            return {
+              ...e,
+              ...notes,
+              isOverDue: new Date() > new Date(notes.dueDate) ? true : false,
+            };
+          }
+          return e;
+        })
+      );
+      setEditMode(false);
+      setEditingIndex(null);
+    } else {
+      setAllNotes([...allNotes, notes]);
+    }
+    setNotes({
+      title: "",
+      details: "",
+      date: "",
+      status: "",
+    });
+    setError("");
+    let dateInput = document.getElementById("date");
+    dateInput.value = "";
+    dateInput.type = "text";
   };
 
   return (
     <>
       <section className="form-sec">
         <form onSubmit={handleSubmit}>
+          {error && <div className="tooltip">{error}</div>}
           <input
             id="date"
             style={{
@@ -129,9 +115,10 @@ const AddNotes = ({
               onChange={handleChange}
               value={notes.details}
               maxLength={800}
+              className="textarea"
             ></textarea>
           </div>
-          <button type="submit" title="Save">
+          <button type="submit" title="Save" style={{ zIndex: 1000 }}>
             <IoAdd />
           </button>
         </form>

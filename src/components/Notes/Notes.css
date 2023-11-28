@@ -8,11 +8,14 @@
   overflow: hidden;
   text-align: start;
   margin-bottom: 20px;
-  height: 140px;
+  height: 150px;
   position: relative;
 }
+.content-div {
+  margin: 20px 0 15px;
+}
 .notes-sec .content-div > p {
-  padding: 10px 15px 0px;
+  padding: 7px 15px 0px;
   font-size: 14px;
 }
 .status-div {
@@ -23,6 +26,18 @@
   right: 0;
   top: 0;
   font-size: 12px;
+}
+.view-div {
+  position: absolute;
+  color: rgb(56, 142, 56);
+  left: 15px;
+  top: 8px;
+  font-size: 18px;
+  cursor: pointer;
+}
+.view-div:hover {
+  color: green;
+  transform: scale(1.1);
 }
 .notes-sec .content-div > h3 {
   padding: 10px 15px 0px;
@@ -50,8 +65,10 @@
   left: 0;
 }
 .btn-div .date-sec {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
+  margin-top: 2px;
+  /* background-color: rgb(187, 59, 187); */
 }
 .btn-div button {
   background-color: transparent;
@@ -64,7 +81,10 @@
 .btn-div button:hover {
   transform: scale(1.1);
 }
-
+.btn-sec button {
+  font-size: 16px;
+  margin-bottom: 3px;
+}
 @media screen and (max-width: 700px) {
   .notes-sec {
     width: 90%;

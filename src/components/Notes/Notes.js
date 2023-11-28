@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import SingleNotes from "../SingleNotes/SingleNotes";
 import "./Notes.css";
+import { FaEye } from "react-icons/fa";
 
 const Notes = ({
   notes,
   title,
   details,
+  isOverDue,
   date,
+  dueDate,
   status,
   index,
   allNotes,
@@ -49,6 +52,30 @@ const Notes = ({
   //..............handleSingleNotes.............
   const [openSingleNotes, setOpenSingleNotes] = useState(false);
 
+  // Managing dates...........
+  let mydate =
+    new Date(dueDate).getDate() >= 10
+      ? new Date(dueDate).getDate()
+      : "0" + new Date(dueDate).getDate();
+  let mymonth =
+    new Date(dueDate).getMonth() + 1 >= 10
+      ? new Date(dueDate).getMonth() + 1
+      : "0" + new Date(dueDate).getMonth();
+  let myyear = new Date(dueDate).getFullYear();
+
+  useEffect(() => {
+    if (new Date() > new Date(dueDate)) {
+      setAllNotes(
+        allNotes.map((item, ind) => {
+          if (ind == index) {
+            return { ...item, isOverDue: true };
+          }
+          return item;
+        })
+      );
+    }
+  }, []);
+
   return (
     <>
       <section className="notes-sec">
@@ -60,15 +87,21 @@ const Notes = ({
                 ? "purple"
                 : status == "Working"
                 ? "orange"
-                : status == "Done"
-                ? "green"
-                : "red",
+                : "green",
+
             fontSize: "12px",
           }}
         >
           {status}
         </div>
-        <div className="content-div" onClick={() => setOpenSingleNotes(true)}>
+        <div
+          className="view-div"
+          title="View Notes"
+          onClick={() => setOpenSingleNotes(true)}
+        >
+          <FaEye />
+        </div>
+        <div className="content-div">
           {title && title.length > 19 ? (
             <h3>
               {title.slice(0, 19)}
@@ -80,22 +113,33 @@ const Notes = ({
           {details && details.length > 92 ? (
             <p>
               {details.slice(0, 92)}
-              <span className="fullview-span">...fullview</span>
+              <span
+                className="fullview-span"
+                onClick={() => setOpenSingleNotes(true)}
+              >
+                ...fullview
+              </span>
             </p>
           ) : (
             <p>{details}</p>
           )}
         </div>
 
-        <div className="btn-div">
+        <div
+          className="btn-div"
+          style={{
+            background:
+              isOverDue && status != "Done" ? "rgba(255, 68, 0, 0.605)" : null,
+          }}
+        >
           <div className="date-sec">
-            {date && date.split(" ")[2]} {date && date.split(" ")[1]}{" "}
-            {date && date.split(" ")[3]}
+            Deadline - {mydate}.{mymonth}.{myyear}
           </div>
           <div className="btn-sec">
             <button
               style={{ visibility: searchMode ? "hidden" : "visible" }}
               onClick={() => handleEdit(index)}
+              title="Edit Notes"
             >
               <AiFillEdit />
             </button>
@@ -105,6 +149,7 @@ const Notes = ({
                 color: "rgba(241, 15, 15, 0.714)",
                 visibility: searchMode ? "hidden" : "visible",
               }}
+              title="Delete Notes"
             >
               <AiFillDelete />
             </button>
