@@ -5,13 +5,6 @@ function Pagination({ pageNum, setPageNum, allNotes, notesPerPage }) {
   const pageCount = Math.ceil(allNotes.length / notesPerPage);
   const pageNumbers = [...Array(pageCount + 1).keys()].slice(1);
 
-  // const handlePagination = (num) => {
-  //   // setPage({
-  //   //   pageNum: num,
-  //   //   // start: pageNum * notesPerPage - notesPerPage,
-  //   //   // end: pageNum * notesPerPage,
-  //   // });
-  // };
   const handlePrevAndForward = (val) => {
     if (val == -1 && pageNum > 1) {
       setPageNum(pageNum - 1);
