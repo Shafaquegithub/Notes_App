@@ -5,19 +5,17 @@ import "./Notes.css";
 import { FaEye } from "react-icons/fa";
 
 const Notes = ({
-  notes,
+  id,
   title,
   details,
   isOverDue,
-  date,
   dueDate,
   status,
   index,
   allNotes,
   setAllNotes,
   setNotes,
-  editingIndex,
-  setEditingIndex,
+  setEditingId,
   setEditMode,
   searchMode,
 }) => {
@@ -38,10 +36,14 @@ const Notes = ({
 
   // .........handleEditing.........function for editing any Notes.....
 
-  const handleEdit = (index) => {
-    setNotes(allNotes[index]);
+  const handleEdit = (curId) => {
+    setNotes(() =>
+      allNotes.find((item) => {
+        return item.id == curId;
+      })
+    );
     setEditMode(true);
-    setEditingIndex(index);
+    setEditingId(id);
     window.scrollTo({
       top: 0,
       left: 0,
@@ -138,7 +140,7 @@ const Notes = ({
           <div className="btn-sec">
             <button
               style={{ visibility: searchMode ? "hidden" : "visible" }}
-              onClick={() => handleEdit(index)}
+              onClick={() => handleEdit(id)}
               title="Edit Notes"
             >
               <AiFillEdit />
@@ -161,7 +163,7 @@ const Notes = ({
           setOpen={setOpenSingleNotes}
           allNotes={allNotes}
           setAllNotes={setAllNotes}
-          index={index}
+          id={id}
         />
       </section>
     </>

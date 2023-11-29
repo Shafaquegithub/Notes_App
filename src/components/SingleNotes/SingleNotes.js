@@ -3,20 +3,23 @@ import "./SingleNotes.css";
 import { RiCloseFill } from "react-icons/ri";
 import { CgNotes } from "react-icons/cg";
 
-const SingleNotes = ({ open, setOpen, allNotes, index, setAllNotes }) => {
-  const { title, details, dueDate, status, date, isOverDue } = allNotes[index];
+const SingleNotes = ({ id, open, setOpen, allNotes, setAllNotes }) => {
+  const { title, details, dueDate, status, date, isOverDue } = allNotes.find(
+    (item) => {
+      return item.id == id;
+    }
+  );
 
-  const changeStatus = (statusValue, index) => {
+  const changeStatus = (statusValue) => {
     setAllNotes(
-      allNotes.map((e, notesIndex) => {
-        if (notesIndex == index) {
-          return { ...e, status: statusValue };
+      allNotes.map((item) => {
+        if (item.id == id) {
+          return { ...item, status: statusValue };
         }
-        return e;
+        return item;
       })
     );
   };
-  // setDate function is for changing date formats.
   const setDate = () => {
     let createdDate = new Date(date).toDateString().split(" ");
     let formatedCreatedDate = `${createdDate[2]} ${createdDate[1]} ${createdDate[3]}`;
@@ -47,7 +50,7 @@ const SingleNotes = ({ open, setOpen, allNotes, index, setAllNotes }) => {
 
         <div className="status-btn-div">
           <div
-            onClick={() => changeStatus("Open", index)}
+            onClick={() => changeStatus("Open")}
             style={{
               borderColor: status == "Open" && "black",
             }}
@@ -55,7 +58,7 @@ const SingleNotes = ({ open, setOpen, allNotes, index, setAllNotes }) => {
             Open
           </div>
           <div
-            onClick={() => changeStatus("Working", index)}
+            onClick={() => changeStatus("Working")}
             style={{
               borderColor: status == "Working" && "black",
             }}
@@ -63,7 +66,7 @@ const SingleNotes = ({ open, setOpen, allNotes, index, setAllNotes }) => {
             Working{" "}
           </div>
           <div
-            onClick={() => changeStatus("Done", index)}
+            onClick={() => changeStatus("Done")}
             style={{
               borderColor: status == "Done" && "black",
             }}

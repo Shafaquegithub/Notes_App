@@ -1,15 +1,18 @@
+.header-sec {
+  background-color: rgba(111, 111, 6, 0.687);
+  box-shadow: 0pc 5px 15px 5px rgba(0, 0, 0, 0.1);
+}
 header {
   display: flex;
   align-items: center;
   justify-content: start;
   height: 50px;
-  padding: 5px 20px;
+  padding: 5px 30px;
   font-size: 25px;
   font-weight: 700;
-  background-color: rgba(111, 111, 6, 0.687);
   color: white;
-  box-shadow: 0pc 5px 15px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 50px;
+  max-width: 1200px;
+  margin: 0 auto 50px;
 }
 
 footer {

@@ -9,8 +9,8 @@ const AddNotes = ({
   setNotes,
   editMode,
   setEditMode,
-  editingIndex,
-  setEditingIndex,
+  editingId,
+  setEditingId,
 }) => {
   const [error, setError] = useState("");
 
@@ -27,6 +27,7 @@ const AddNotes = ({
         [e.target.name]: e.target.value,
         date: new Date().toDateString(),
         status: "Open",
+        id: new Date().valueOf(),
       });
     }
   };
@@ -45,19 +46,19 @@ const AddNotes = ({
     }
     if (editMode) {
       setAllNotes(
-        allNotes.map((e, index) => {
-          if (index == editingIndex) {
+        allNotes.map((item) => {
+          if (item.id == editingId) {
             return {
-              ...e,
+              ...item,
               ...notes,
               isOverDue: new Date() > new Date(notes.dueDate) ? true : false,
             };
           }
-          return e;
+          return item;
         })
       );
       setEditMode(false);
-      setEditingIndex(null);
+      setEditingId(null);
     } else {
       setAllNotes([...allNotes, notes]);
     }

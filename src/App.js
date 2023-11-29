@@ -21,6 +21,7 @@ function App() {
 
   const [allNotes, setAllNotes] = useState(getLocalStorageList());
   const [notes, setNotes] = useState({
+    id: "",
     title: "",
     details: "",
     date: "",
@@ -29,7 +30,7 @@ function App() {
     isOverDue: false,
   });
   const [editMode, setEditMode] = useState(false);
-  const [editingIndex, setEditingIndex] = useState(null);
+  const [editingId, setEditingId] = useState(null);
   const [searchMode, setSearchMode] = useState(false);
   const [createMode, setCreateMode] = useState(false);
 
@@ -55,14 +56,14 @@ function App() {
         setAllNotes={setAllNotes}
         editMode={editMode}
         setEditMode={setEditMode}
-        editingIndex={editingIndex}
-        setEditingIndex={setEditingIndex}
+        editingId={editingId}
+        setEditingId={setEditingId}
       />
       <AllNotes
         allNotes={allNotes}
         setAllNotes={setAllNotes}
         setNotes={setNotes}
-        setEditingIndex={setEditingIndex}
+        setEditingId={setEditingId}
         editMode={editMode}
         setEditMode={setEditMode}
         searchMode={searchMode}

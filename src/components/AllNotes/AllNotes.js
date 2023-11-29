@@ -1,44 +1,57 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Notes from "../Notes/Notes";
 import "./AllNotes.css";
+import Pagination from "../Pagination/Pagination";
 
 const AllNotes = ({
   allNotes,
   setAllNotes,
   setNotes,
-  setEditingIndex,
+  setEditingId,
   editMode,
   setEditMode,
   searchMode,
 }) => {
-  const handlePageClick = (data) => {
-    console.log(data.selected);
-  };
+  const notesPerPage = 4;
+  const [pageNum, setPageNum] = useState(1);
+  const start = pageNum * notesPerPage - notesPerPage;
+  const end = pageNum * notesPerPage;
+
   return (
     <>
       <h3 className="notes-heading">Your Notes</h3>
 
-      {allNotes.length == 0 ? (
+      {allNotes && allNotes.length == 0 ? (
         <h3 style={{ marginTop: "100px" }}>Sorry! No notes available.</h3>
       ) : (
         <section className="allNotes-sec">
           {allNotes &&
-            allNotes.map((items, index) => (
-              <Notes
-                key={index}
-                {...items}
-                index={index}
-                allNotes={allNotes}
-                setAllNotes={setAllNotes}
-                setNotes={setNotes}
-                setEditingIndex={setEditingIndex}
-                editMode={editMode}
-                setEditMode={setEditMode}
-                searchMode={searchMode}
-              />
-            ))}
+            allNotes
+              .reverse()
+              .slice(start, end)
+              .map((items, index) => (
+                <Notes
+                  key={index}
+                  {...items}
+                  index={index}
+                  allNotes={allNotes}
+                  setAllNotes={setAllNotes}
+                  setNotes={setNotes}
+                  setEditingId={setEditingId}
+                  editMode={editMode}
+                  setEditMode={setEditMode}
+                  searchMode={searchMode}
+                  setPageNum={setPageNum}
+                />
+              ))}
         </section>
       )}
+      <Pagination
+        allNotes={allNotes}
+        pageNum={pageNum}
+        setPageNum={setPageNum}
+        notesPerPage={notesPerPage}
+      />
     </>
   );
 };
