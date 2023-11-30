@@ -18,6 +18,9 @@ const Notes = ({
   setEditingId,
   setEditMode,
   searchMode,
+  pageNum,
+  setPageNum,
+  start,
 }) => {
   // .........handleDeleting.........function for deleting any Notes.....
 
@@ -25,6 +28,9 @@ const Notes = ({
     if (window.confirm("Do you really want to delete it?")) {
       const filteredData = allNotes.filter((item) => item.id !== id);
       setAllNotes(filteredData);
+      if (start + 1 >= allNotes.length) {
+        setPageNum(pageNum - 1);
+      }
       setNotes({
         title: "",
         details: "",
@@ -63,8 +69,8 @@ const Notes = ({
   useEffect(() => {
     if (new Date() > new Date(dueDate)) {
       setAllNotes(
-        allNotes.map((item, ind) => {
-          if (ind == index) {
+        allNotes.map((item) => {
+          if (item.id == id) {
             return { ...item, isOverDue: true };
           }
           return item;
