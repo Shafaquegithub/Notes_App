@@ -22,7 +22,7 @@ const Notes = ({
   // .........handleDeleting.........function for deleting any Notes.....
 
   const handleDelete = () => {
-    if (window.confirm()) {
+    if (window.confirm("Do you really want to delete it?")) {
       const filteredData = allNotes.filter((item) => item.id !== id);
       setAllNotes(filteredData);
       setNotes({
