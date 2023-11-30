@@ -27,7 +27,6 @@ const AllNotes = ({
         <section className="allNotes-sec">
           {allNotes &&
             allNotes
-              .reverse()
               .slice(start, end)
               .map((items, index) => (
                 <Notes

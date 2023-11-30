@@ -21,11 +21,9 @@ const Notes = ({
 }) => {
   // .........handleDeleting.........function for deleting any Notes.....
 
-  const handleDelete = (index) => {
+  const handleDelete = () => {
     if (window.confirm()) {
-      const filteredData = allNotes.filter(
-        (items, filterIndex) => index !== filterIndex
-      );
+      const filteredData = allNotes.filter((item) => item.id !== id);
       setAllNotes(filteredData);
       setNotes({
         title: "",
@@ -37,11 +35,8 @@ const Notes = ({
   // .........handleEditing.........function for editing any Notes.....
 
   const handleEdit = (curId) => {
-    setNotes(() =>
-      allNotes.find((item) => {
-        return item.id == curId;
-      })
-    );
+    const res = allNotes.find((item) => item.id == curId);
+    setNotes(res);
     setEditMode(true);
     setEditingId(id);
     window.scrollTo({
