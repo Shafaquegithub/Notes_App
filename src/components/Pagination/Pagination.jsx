@@ -13,13 +13,17 @@ function Pagination({ pageNum, setPageNum, allNotes, notesPerPage }) {
   };
   return (
     <>
-      <div className="pagination-container">
+      <div
+        className="pagination-container"
+        style={{ display: allNotes.length <= 4 ? "none" : "flex" }}
+      >
         <div
           className=" pagination-div prev"
           onClick={() => handlePrevAndForward(-1)}
         >{`<`}</div>
         {pageNumbers.map((num) => (
           <div
+            key={num}
             className={`pagination-div page-num ${num == pageNum && "active"}`}
             onClick={() => setPageNum(num)}
           >
