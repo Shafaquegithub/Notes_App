@@ -11,9 +11,10 @@ const AllNotes = ({
   editMode,
   setEditMode,
   searchMode,
+  pageNum,
+  setPageNum,
 }) => {
   const notesPerPage = 4;
-  const [pageNum, setPageNum] = useState(1);
   const start = pageNum * notesPerPage - notesPerPage;
   const end = pageNum * notesPerPage;
 
@@ -41,7 +42,9 @@ const AllNotes = ({
                   editMode={editMode}
                   setEditMode={setEditMode}
                   searchMode={searchMode}
+                  pageNum={pageNum}
                   setPageNum={setPageNum}
+                  start={start}
                 />
               ))}
         </section>

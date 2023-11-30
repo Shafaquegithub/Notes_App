@@ -15,7 +15,7 @@ function Pagination({ pageNum, setPageNum, allNotes, notesPerPage }) {
     <>
       <div
         className="pagination-container"
-        style={{ display: allNotes.length <= 4 ? "none" : "flex" }}
+        style={{ display: allNotes.length <= notesPerPage ? "none" : "flex" }}
       >
         <div
           className=" pagination-div prev"

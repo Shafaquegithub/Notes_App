@@ -11,6 +11,8 @@ const AddNotes = ({
   setEditMode,
   editingId,
   setEditingId,
+  pageNum,
+  setPageNum,
 }) => {
   const [error, setError] = useState("");
 
@@ -19,7 +21,7 @@ const AddNotes = ({
       setNotes({
         ...notes,
         [e.target.name]: e.target.value,
-        status: "Open",
+        // status: "Open",
       });
     } else {
       setNotes({
@@ -61,6 +63,7 @@ const AddNotes = ({
       setEditingId(null);
     } else {
       setAllNotes([...allNotes, notes]);
+      setPageNum(1);
     }
     setNotes({
       title: "",

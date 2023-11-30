@@ -33,6 +33,7 @@ function App() {
   const [editingId, setEditingId] = useState(null);
   const [searchMode, setSearchMode] = useState(false);
   const [createMode, setCreateMode] = useState(false);
+  const [pageNum, setPageNum] = useState(1);
 
   // .......function for updating LocalStorage when Notes are added or edited...........
   useEffect(() => {
@@ -58,6 +59,8 @@ function App() {
         setEditMode={setEditMode}
         editingId={editingId}
         setEditingId={setEditingId}
+        pageNum={pageNum}
+        setPageNum={setPageNum}
       />
       <AllNotes
         allNotes={allNotes}
@@ -67,6 +70,8 @@ function App() {
         editMode={editMode}
         setEditMode={setEditMode}
         searchMode={searchMode}
+        pageNum={pageNum}
+        setPageNum={setPageNum}
       />
       <HeaderAndFooter header={false} footer={true} />
     </div>
