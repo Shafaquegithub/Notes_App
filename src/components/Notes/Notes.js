@@ -63,7 +63,7 @@ const Notes = ({
   let mymonth =
     new Date(dueDate).getMonth() + 1 >= 10
       ? new Date(dueDate).getMonth() + 1
-      : "0" + new Date(dueDate).getMonth();
+      : "0" + (new Date(dueDate).getMonth() + 1);
   let myyear = new Date(dueDate).getFullYear();
 
   useEffect(() => {
