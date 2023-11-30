@@ -54,7 +54,8 @@
   font-size: 15px;
 }
 .btn-div {
-  background-color: rgba(111, 111, 6, 0.687);
+  background-color: #6f6f06af;
+  /* background-color: rgba(0, 128, 0, 0.745); */
   margin-top: 15px;
   padding: 6px 10px 1px;
   display: flex;

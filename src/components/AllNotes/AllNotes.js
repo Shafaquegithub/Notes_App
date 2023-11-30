@@ -16,7 +16,7 @@ const AllNotes = ({
   const [pageNum, setPageNum] = useState(1);
   const start = pageNum * notesPerPage - notesPerPage;
   const end = pageNum * notesPerPage;
-  console.log([...allNotes].reverse());
+
   return (
     <>
       <h3 className="notes-heading">Your Notes</h3>

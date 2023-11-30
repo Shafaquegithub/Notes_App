@@ -81,10 +81,10 @@ const Notes = ({
           style={{
             backgroundColor:
               status == "Open"
-                ? "purple"
+                ? "rgba(100, 13, 100, 0.759)"
                 : status == "Working"
-                ? "orange"
-                : "green",
+                ? "rgba(255, 166, 0, 0.764)"
+                : "rgba(0, 128, 0, 0.745)",
 
             fontSize: "12px",
           }}

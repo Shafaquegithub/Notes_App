@@ -90,7 +90,9 @@
 .singleNotes-sec .details .date-div p {
   font-size: 13px;
 }
-
+.details-p {
+  text-align: center;
+}
 @media screen and (max-width: 600px) {
   .singleNotes-sec .closeBtn {
     top: 15px;

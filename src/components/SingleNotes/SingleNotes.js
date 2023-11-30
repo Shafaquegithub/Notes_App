@@ -42,8 +42,9 @@ const SingleNotes = ({ id, open, setOpen, allNotes, setAllNotes }) => {
           <CgNotes />
         </h1>
         <h2>{title}</h2>
-        <p>{details}</p>
+        <p className="details-p">{details}</p>
 
+        <br />
         <br />
 
         <h4>Status:-</h4>
