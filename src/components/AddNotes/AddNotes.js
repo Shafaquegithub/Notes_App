@@ -21,7 +21,6 @@ const AddNotes = ({
       setNotes({
         ...notes,
         [e.target.name]: e.target.value,
-        // status: "Open",
       });
     } else {
       setNotes({
@@ -53,7 +52,6 @@ const AddNotes = ({
             return {
               ...item,
               ...notes,
-              isOverDue: new Date() > new Date(notes.dueDate) ? true : false,
             };
           }
           return item;

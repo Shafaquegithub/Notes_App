@@ -66,19 +66,6 @@ const Notes = ({
       : "0" + (new Date(dueDate).getMonth() + 1);
   let myyear = new Date(dueDate).getFullYear();
 
-  useEffect(() => {
-    if (new Date() > new Date(dueDate)) {
-      setAllNotes(
-        allNotes.map((item) => {
-          if (item.id == id) {
-            return { ...item, isOverDue: true };
-          }
-          return item;
-        })
-      );
-    }
-  }, []);
-
   return (
     <>
       <section className="notes-sec">
@@ -132,7 +119,9 @@ const Notes = ({
           className="btn-div"
           style={{
             background:
-              isOverDue && status != "Done" ? "rgba(255, 68, 0, 0.605)" : null,
+              new Date() > new Date(dueDate) && status != "Done"
+                ? "rgba(255, 68, 0, 0.605)"
+                : null,
           }}
         >
           <div className="date-sec">

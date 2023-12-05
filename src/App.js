@@ -27,7 +27,6 @@ function App() {
     date: "",
     dueDate: "",
     status: "",
-    isOverDue: false,
   });
   const [editMode, setEditMode] = useState(false);
   const [editingId, setEditingId] = useState(null);
