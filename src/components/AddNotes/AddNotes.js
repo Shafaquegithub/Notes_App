@@ -41,10 +41,10 @@ const AddNotes = ({
       setError("Please fill all required fields");
       return;
     }
-    // if (new Date() > new Date(notes.dueDate)) {
-    //   setError("Please select future date");
-    //   return;
-    // }
+    if (new Date() > new Date(notes.dueDate)) {
+      setError("Please select future date");
+      return;
+    }
     if (editMode) {
       setAllNotes(
         allNotes.map((item) => {
