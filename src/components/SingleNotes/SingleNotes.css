@@ -49,6 +49,8 @@
   padding: 10px;
   text-align: center;
   border-radius: 5px;
+  font-family: "Roboto", sans-serif;
+  font-style: italic;
 }
 
 .singleNotes-sec .details {

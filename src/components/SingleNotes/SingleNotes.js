@@ -79,7 +79,7 @@ const SingleNotes = ({ id, open, setOpen, allNotes, setAllNotes }) => {
           <p>Created: {setDate().formatedCreatedDate}</p>
           <p>Expires: {dueDate ? setDate().formatedExpiryDate : "Not given"}</p>
         </div>
-        {isOverDue && status != "Done" && (
+        {new Date() > new Date(dueDate) && status != "Done" && (
           <div className="overdue-div">This Project is Over Due</div>
         )}
       </div>
