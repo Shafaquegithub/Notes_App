@@ -14,7 +14,7 @@ const AllNotes = ({
   pageNum,
   setPageNum,
 }) => {
-  const notesPerPage = 4;
+  const notesPerPage = 6;
   const start = pageNum * notesPerPage - notesPerPage;
   const end = pageNum * notesPerPage;
 
